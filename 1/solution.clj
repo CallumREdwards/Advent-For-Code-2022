@@ -12,7 +12,8 @@
 
 (let [[inputFile numElves] *command-line-args*
       elfCalories (splitOnBlankLine inputFile)]
-  (->> (sort > (map getCalorieSum elfCalories))
+  (->> (map getCalorieSum elfCalories) 
+       (sort >)
        (take (read-string numElves))
        (reduce +)))
 	
