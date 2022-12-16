@@ -1,6 +1,6 @@
-(ns day2.core-test
+(ns advent-of-code.core-test
   (:require [clojure.test :refer :all]
-            [day2.core :refer :all]))
+            [advent-of-code.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

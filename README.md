@@ -1,4 +1,4 @@
-# day3
+# advent_of_code
 
 A Clojure library designed to ... well, that part is up to you.
 
