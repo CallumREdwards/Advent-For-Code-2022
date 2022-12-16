@@ -1,10 +1,7 @@
-# advent_of_code
+# Advent of Code 2022
 
-A Clojure library designed to ... well, that part is up to you.
-
-## Usage
-
-FIXME
+A Clojure library storing my solutions for advent of code 2022.
+See https://adventofcode.com/2022.
 
 ## License
 
