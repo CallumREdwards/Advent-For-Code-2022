@@ -3,21 +3,20 @@
 
 (defrecord Step [amount fromIndex toIndex])
 
+; For solution 1, we need to reverse packages
 (defn move [amount fromStack toStack]
   (let [[packages remaining] (split-at amount fromStack)]
-    [remaining (concat (reverse packages) toStack)]))
+    [remaining (concat packages toStack)]))
 
-(defn replace [n x xs]
-  "reorder args of assoc so we can use '->>' nicely in runStep"
-  (assoc xs n x))
+(defn replaceStack [n x xs] (assoc xs n x))
 
 (defn runStep [stacks step]
   (let [fromStack (get stacks (:fromIndex step))
         toStack (get stacks (:toIndex step))
         [fromStack' toStack'] (move (:amount step) fromStack toStack)]
-    (->> stacks
-         (replace (:fromIndex step) fromStack')
-         (replace (:toIndex step) toStack'))))
+    (-> stacks
+        (assoc (:fromIndex step) fromStack')
+        (assoc (:toIndex step) toStack'))))
 
 ; Couldn't be bothered to parse starting state
 (def startingStacks
@@ -45,15 +44,11 @@
        str/split-lines
        (map parseStep)))
       
-
-;;debugging parts of expressions
-(defmacro dbg[x] `(let [x# ~x] (println "dbg:" '~x "=" x#) x#))
-
-(defn solution1 []
+(defn solution []
   (->> (getSteps)
        (reduce runStep startingStacks)
        (map first)
        (reduce str)))
 
-(solution1)
+(solution)
 
